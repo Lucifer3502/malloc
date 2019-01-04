@@ -48,7 +48,7 @@ void MEM_API_ATTR
     mem_header_t *next = NULL;
     
     mem_buf_init();
-    MEM_LOG_DEBUG("malloc size: %u\r\n", sz);
+    MEM_LOG_DEBUG("malloc size: %u - %u\r\n", sz, size);
     if(sz >= MEM_BUF_SIZE) {
         MEM_LOG_FATAL("OVER SIZE: %u\r\n", size);
         return NULL;
