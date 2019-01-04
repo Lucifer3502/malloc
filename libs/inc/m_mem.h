@@ -18,7 +18,7 @@ extern "C"
 #endif
 
 /*
-* please redefine MEM_BUF_SIZE and MEM_BUF_SIZE according to your environment;
+* please redefine MEM_BUF_SIZE and MEM_BUF_MIN according to your environment;
 * MEM_BUF_SIZE: global heap size; MEM_BUF_MIN: the malloc min size;
 */
 #define MEM_BUF_SIZE    (10 * 1024)
