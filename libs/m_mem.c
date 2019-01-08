@@ -70,7 +70,7 @@ void MEM_API_ATTR
             next->pre = 0;
         }
         
-        if(head->size < (sz * 2 + MEM_HEAD_SIZE)) {
+        if(head->size < (sz + MEM_BUF_MIN + MEM_HEAD_SIZE)) {
             //small free buf, do not need to split, so return the whole buf.
             head->flag = 0;
             return (void *)((uint8_t *)head + MEM_HEAD_SIZE);
