@@ -76,8 +76,8 @@ void MEM_API_ATTR
             return (void *)((uint8_t *)head + MEM_HEAD_SIZE);
         } else {
             //big buf, split into two small buf.
-            mem_header_t *new = (mem_header_t *)(g_mem_buf + offset - MEM_HEAD_SIZE - sz);
-            void *addr = (void *)((uint8_t *)new - SIZE_OF_POINT);
+            mem_header_t *new_mem = (mem_header_t *)(g_mem_buf + offset - MEM_HEAD_SIZE - sz);
+            void *addr = (void *)((uint8_t *)new_mem - SIZE_OF_POINT);
 
             /*update the head info*/
             head->size -= sz + MEM_HEAD_SIZE;
@@ -89,10 +89,10 @@ void MEM_API_ATTR
             memcpy(addr, &head, SIZE_OF_POINT);
             
             //return the split new buf;
-            new->pre = 1;
-            new->flag = 0;
-            new->size = sz;
-            return (void *)((uint8_t *)new + MEM_HEAD_SIZE);
+            new_mem->pre = 1;
+            new_mem->flag = 0;
+            new_mem->size = sz;
+            return (void *)((uint8_t *)new_mem + MEM_HEAD_SIZE);
         }
     }
     MEM_LOG_DEBUG("there is no valid free mem size: %u\r\n", size);
